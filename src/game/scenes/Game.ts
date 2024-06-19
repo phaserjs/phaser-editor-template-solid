@@ -2,6 +2,7 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
+import { EventBus } from '../EventBus';
 /* END-USER-IMPORTS */
 
 export default class Game extends Phaser.Scene {
@@ -35,17 +36,18 @@ export default class Game extends Phaser.Scene {
 
 	create() {
 
-		this.editorCreate();
+        this.editorCreate();
 
-		this.cameras.main.setBackgroundColor(0x00ff00);
+        this.cameras.main.setBackgroundColor(0x00ff00);
 
-        this.input.once('pointerdown', () => {
-
-            this.scene.start('GameOver');
-
-        });
+        EventBus.emit('current-scene-ready', this);
 
 	}
+
+    changeScene ()
+    {
+        this.scene.start('GameOver');
+    }
 
 	/* END-USER-CODE */
 }
