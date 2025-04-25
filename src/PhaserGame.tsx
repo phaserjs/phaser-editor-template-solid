@@ -1,7 +1,7 @@
 import { onCleanup, onMount } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import StartGame from './main';
-import { EventBus } from './EventBus';
+import StartGame from './game/main';
+import { EventBus } from './game/EventBus';
 
 export interface IRefPhaserGame {
     game: Phaser.Game | null;
